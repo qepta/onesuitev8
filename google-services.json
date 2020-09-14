@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:1054305849764:android:0b7457a80c21080146b131",
         "android_client_info": {
-          "package_name": "com.qepta.hominu"
+          "package_name": "io.ionic.starter"
         }
       },
       "oauth_client": [
