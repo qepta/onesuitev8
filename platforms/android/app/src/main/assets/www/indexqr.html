@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>  
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- animation CSS -->
+<link href="css/animate.css" rel="stylesheet">
+<!-- Custom CSS -->
+<link href="css/style.css" rel="stylesheet">
+<!-- color CSS -->
+<link href="css/colors/default.css" id="theme"  rel="stylesheet">
+	
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div id="basepage">
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery -->
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+
+    <script src="styl/bower_components/jquery/dist/jquery.min.js"></script>
+
+    <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+    <!--Style Switcher -->
+<script src="styl/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
+  <script>
+      document.addEventListener("deviceready", onDeviceReady, false);
+
+      function onDeviceReady() {
+	  
+cordova.plugins.barcodeScanner.scan(
+  function (result) {
+    if(!result.cancelled)
+    {
+
+localStorage.setItem("famb", result.text);
+if (result.text.indexOf('f_username=')>=0) {
+		window.location.href = 'index.html'
+}else{
+		window.location.href = 'loginqr.html'
+}
+
+    }
+    else
+    {
+var t="1";
+		window.location.href = 'login.html'
+
+    }
+  },
+  function (error) {
+		window.location.href = 'login.html'
+
+  }
+);
+var u="2";
+
+	  
+	
+	  
+    }
+
+  </script>
+
+</body>
+
+
+</html> 
