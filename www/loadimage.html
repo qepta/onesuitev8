@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>  
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- animation CSS -->
+<link href="css/animate.css" rel="stylesheet">
+<!-- Custom CSS -->
+<link href="css/style.css" rel="stylesheet">
+<!-- color CSS -->
+<link href="css/colors/default.css" id="theme"  rel="stylesheet">
+	
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div id="basepage">
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery -->
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+
+    <script src="styl/bower_components/jquery/dist/jquery.min.js"></script>
+
+    <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+    <!--Style Switcher -->
+<script src="styl/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
+  <script>
+      document.addEventListener("deviceready", onDeviceReady, false);
+
+      function onDeviceReady() {
+	  
+navigator.camera.getPicture(
+        function(result){
+console.log(result);
+alert("ok");
+},function(error){
+console.log(error);
+},{
+sourceType : Camera.PictureSourceType.CAMERA
+});
+var u="2";
+
+	  
+	
+	  
+    }
+
+  </script>
+
+</body>
+
+
+</html> 

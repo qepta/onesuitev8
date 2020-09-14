@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap:">
+
+	<link rel="icon" href="images/favicon.png">
+
+	
+	<title>OneSuite</title>
+	<link rel="stylesheet" href="css/framework7.bundle.min.css">
+	<link rel="stylesheet" href="css/ionicons.min.css">
+	<link rel="stylesheet" href="css/style.css">
+	<script type="text/javascript" charset="utf-8" src="../cordova.js"></script>
+</head>
+<body id='basepage'>
+	
+</body>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+
+<script src="js/framework7.bundle.min.js"></script>
+
+
+<script>
+var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : sParameterName[1];
+        }
+    }
+};
+
+      document.addEventListener("deviceready", onDeviceReady, false);
+
+
+      function onDeviceReady() {
+
+	$.ajax({
+		url: localStorage.getItem("famb")+"/webpages/v1/mobileresource.do?pageid="+getUrlParameter("idpage")+"&idisp=apple&usr="+localStorage.getItem("fusr")+"&psw="+localStorage.getItem("fpsw"),
+		method: 'POST',
+		data: {},
+		beforeSend:function(e){
+
+
+			
+			},
+		success: function(retorno){
+            $("#basepage").html(retorno);
+            $("#basepage").show();
+			
+		},
+error: function(result) {
+			$("#basepage").html("<br><br><div style='text-align:center'><span class='glyphicon glyphicon-alert' style='font-size: 5em;'></div><br><div style='text-align:center'>Não foi possível acessar o sistema</div><br><br><div style='text-align:center'><a class='btn btn-default btn-lg text-uppercase' href='index.html'><span class='glyphicon glyphicon-repeat' aria-hidden='true'></span> Tentar novamente</a></div><br><br><div style='text-align:center'><a class='btn btn-default btn-lg text-uppercase' href='logout.html'><span class='glyphicon glyphicon-log-out' aria-hidden='true'></span> Sair</a></div>");
+
+}
+	});               
+
+
+	  
+    }
+
+
+  </script>
+</html>
