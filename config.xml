@@ -20,6 +20,7 @@
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="3000" />
     <platform name="android">
+	<resource-file src="google-services.json" target="app/google-services.json" />
         <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application" xmlns:android="http://schemas.android.com/apk/res/android">
             <application android:networkSecurityConfig="@xml/network_security_config" />
         </edit-config>
@@ -105,6 +106,10 @@
     <plugin name="cordova-plugin-inappbrowser" spec="~3.2.0" />
     <plugin name="phonegap-plugin-barcodescanner" spec="~8.1.0" />
     <plugin name="cordova-plugin-camera" spec="~4.1.0" />
+    <plugin name="phonegap-plugin-push" spec="~2.3.0">
+        <variable name="ANDROID_SUPPORT_V13_VERSION" value="27.+" />
+        <variable name="FCM_VERSION" value="17.0.+" />
+    </plugin>
     <plugin name="cordova-plugin-geolocation" spec="~4.0.2" />
     <plugin name="cordova-plugin-media" spec="~5.0.3" />
     <plugin name="cordova-plugin-dialogs" spec="~2.0.2" />
