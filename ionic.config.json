@@ -1,0 +1,8 @@
+{
+  "name": "onesuite",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react",
+  "id": "05622f3f"
+}
