@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>  
+<html lang="pt-br">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- animation CSS -->
+<link href="css/animate.css" rel="stylesheet">
+<!-- Custom CSS -->
+<link href="css/style.css" rel="stylesheet">
+<!-- color CSS -->
+<link href="css/colors/default.css" id="theme"  rel="stylesheet">
+	
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div id="basepage">
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery -->
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+
+    <script src="styl/bower_components/jquery/dist/jquery.min.js"></script>
+
+    <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+	
+  <script>
+
+      document.addEventListener("deviceready", onDeviceReady, false);
+$( document ).ready(function() {onDeviceReady();});
+
+      function onDeviceReady() {
+
+
+	$.ajax({
+		url: localStorage.getItem("famb")+"/webpages/v1/mobileresource.do?pageid=emptios.app&idisp=apple&usr="+localStorage.getItem("fusr")+"&registrationId=emp"+localStorage.getItem("registrationId")+"&psw="+localStorage.getItem("fpsw"),
+		method: 'POST',
+		data: {},
+		beforeSend:function(e){
+			$("#basepage").html("<br><br><br><br><div style='text-align:center'><br><br><img width='40px' src='loader.gif'></div>");
+			
+			},
+		success: function(retorno){
+if (retorno.trim()=="") {
+		window.location.href = 'base.html'
+}else{
+            $("#basepage").html(retorno);
+            $("#basepage").show();
+}
+			
+		},
+error: function(result) {
+	$("#basepage").html("<br><br><div style='text-align:center'><span class='glyphicon glyphicon-alert' style='font-size: 5em;'></div><br><div style='text-align:center'>Não foi possível conectar ao sistema</div><br><br><div style='text-align:center'><a class='btn btn-default btn-lg text-uppercase' href='index.html'><span class='glyphicon glyphicon-repeat' aria-hidden='true'></span> Tentar novamente</a></div><br><br><div style='text-align:center'><a class='btn btn-default btn-lg text-uppercase' href='login.html'><span class='glyphicon glyphicon-cog' aria-hidden='true'></span> Rever Configurações</a></div>");
+
+}
+	});               
+
+
+	  
+    }
+
+  </script>
+
+</body>
+
+
+</html>

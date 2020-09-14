@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="white">
+<meta name="theme-color" content="#2196f3">
+<meta http-equiv="Content-Security-Policy" content="default-src * gap: file:; style-src 'self' 'unsafe-inline'; img-src 'self' data:; script-src * 'unsafe-inline' 'unsafe-eval'">
+<title>Framework7 Material</title>
+<link rel="stylesheet" href="../dist/css/framework7.material.min.css">
+<link rel="stylesheet" href="../dist/css/framework7.material.colors.min.css">
+<link rel="stylesheet" href="css/material-icons.css">
+<link rel="stylesheet" href="css/kitchen-sink.css">
+ <script type="text/javascript" charset="utf-8" src="../../cordova.js"></script>
+
+
+
+<link rel="icon" href="img/icon.png">
+</head>
+<body id='basepage'>
+
+
+</body>
+<script type="text/javascript" src="../dist/js/jquery.min.js"></script>
+<script type="text/javascript" src="../dist/js/framework7.min.js"></script>
+
+<script>
+var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : sParameterName[1];
+        }
+    }
+};
+
+      document.addEventListener("deviceready", onDeviceReady, false);
+
+
+      function onDeviceReady() {
+
+
+	$.ajax({
+		url: localStorage.getItem("famb")+"/webpages/v1/mobileresource.do?pageid="+getUrlParameter("idpage")+"&idisp=apple&usr="+localStorage.getItem("fusr")+"&psw="+localStorage.getItem("fpsw"),
+		method: 'POST',
+		data: {},
+		beforeSend:function(e){
+			$("#basepage").html("<br><br><br><div style='text-align:center'><br><br> <img width='36px' src='loader.gif'></div>");
+
+			
+			},
+		success: function(retorno){
+            $("#basepage").html(retorno);
+            $("#basepage").show();
+			
+		},
+error: function(result) {
+			$("#basepage").html("<br><br><div style='text-align:center'><span class='glyphicon glyphicon-alert' style='font-size: 5em;'></div><br><div style='text-align:center'>Ocorreu um erro de conexão ou instabilidade de acesso ao sistema</div><br><br><div style='text-align:center'><a class='btn btn-default btn-lg text-uppercase' href='index.html'><span class='glyphicon glyphicon-repeat' aria-hidden='true'></span> Conectar novamente</a></div><br><br><div style='text-align:center'><a class='btn btn-default btn-lg text-uppercase' href='logout.html'><span class='glyphicon glyphicon-log-out' aria-hidden='true'></span> Sair</a></div>");
+
+}
+	});               
+
+
+	  
+    }
+
+  </script>
+
+
+
+</html>
