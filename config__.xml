@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.qepta.emptios" version="1.0.4" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Emptios</name>
+    <description>
+        Plataforma de Compras, Despesas e muto mais
+    </description>
+    <author email="suporte@qepta.com.br" href="http://www.qepta.com.br">
+        Qepta Software
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <allow-navigation href="https://*/*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <platform name="android">
+        <resource-file src="config/google-services.json" target="app/google-services.json" />
+        <allow-intent href="market:*" />
+        <icon density="ldpi" src="res/ldpi.png" />
+        <icon density="mdpi" src="res/mdpi.png" />
+        <icon density="hdpi" src="res/hdpi.png" />
+        <icon density="xhdpi" src="res/xhdpi.png" />
+    </platform>
+    <platform name="ios">
+        <edit-config file="*-Info.plist" mode="merge" overwrite="true" target="NSLocationWhenInUseUsageDescription">
+            <string>Anexar recibos e comprovantes.</string>
+        </edit-config>
+        <edit-config file="*-Info.plist" mode="merge" overwrite="true" target="NSLocationAlwaysUsageDescription">
+            <string>Anexar recibos e comprovantes.</string>
+        </edit-config>
+        <edit-config file="*-Info.plist" mode="merge" overwrite="true" target="NSPhotoLibraryUsageDescription">
+            <string>Anexar recibos e comprovantes.</string>
+        </edit-config>
+        <edit-config file="*-Info.plist" mode="merge" overwrite="true" target="NSCameraUsageDescription">
+            <string>Capturar recibos e comprovantes.</string>
+        </edit-config>
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+        <icon height="180" src="res/ios/icon-60@3x.png" width="180" />
+        <icon height="60" src="res/ios/icon-60.png" width="60" />
+        <icon height="120" src="res/ios/icon-60@2x.png" width="120" />
+        <icon height="76" src="res/ios/icon-76.png" width="76" />
+        <icon height="152" src="res/ios/icon-76@2x.png" width="152" />
+        <icon height="40" src="res/ios/icon-40.png" width="40" />
+        <icon height="80" src="res/ios/icon-40@2x.png" width="80" />
+        <icon height="57" src="res/ios/icon.png" width="57" />
+        <icon height="114" src="res/ios/icon@2x.png" width="114" />
+        <icon height="72" src="res/ios/icon-72.png" width="72" />
+        <icon height="144" src="res/ios/icon-72@2x.png" width="144" />
+        <icon height="167" src="res/ios/icon-167.png" width="167" />
+        <icon height="29" src="res/ios/icon-small.png" width="29" />
+        <icon height="58" src="res/ios/icon-small@2x.png" width="58" />
+        <icon height="50" src="res/ios/icon-50.png" width="50" />
+        <icon height="100" src="res/ios/icon-50@2x.png" width="100" />
+        <icon height="167" src="res/ios/icon-83.5@2x.png" width="167" />
+        <icon height="1024" src="res/ios/iconapplefull.png" width="1024" />
+		 <splash src="res/screen/ios/icon-76@2x.png" />
+    </platform>
+    <preference name="phonegap-version" value="cli-9.0.0" />
+    <preference name="StatusBarOverlaysWebView" value="false" />
+    <preference name="StatusBarBackgroundColor" value="#000000" />
+    <preference name="StatusBarStyle" value="lightcontent" />
+    <splash src="res/screen/ios/icon-76@2x.png" />
+    <plugin name="cordova-plugin-whitelist" spec="1" />
+    <plugin name="cordova-plugin-inappbrowser" spec="~3.2.0" />
+    <plugin name="phonegap-plugin-barcodescanner" spec="~8.1.0" />
+    <plugin name="cordova-plugin-camera" spec="~4.1.0" />
+    <plugin name="phonegap-plugin-push" spec="~2.3.0">
+        <variable name="ANDROID_SUPPORT_V13_VERSION" value="27.+" />
+        <variable name="FCM_VERSION" value="17.0.+" />
+    </plugin>
+    <plugin name="cordova-plugin-statusbar" spec="~2.4.3" />
+    <plugin name="cordova-plugin-geolocation" spec="~4.0.2" />
+    <plugin name="cordova-plugin-splashscreen" spec="~5.0.3" />
+    <plugin name="cordova-plugin-media" spec="~5.0.3" />
+    <plugin name="cordova-plugin-dialogs" spec="~2.0.2" />
+</widget>
