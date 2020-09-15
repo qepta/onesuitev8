@@ -124,7 +124,7 @@ urx = amb+"&userAgent=OneSuiteAppv500";
 amb = end;
 
 }
-alert(urx);
+
 	$.ajax({
 		url: urx,
 		method: 'POST',
@@ -154,7 +154,7 @@ if (retorno.indexOf('<ok>true') >= 0) {
 }else{
 
 navigator.notification.alert(
-        retorno+'Não foi possível conectar ao sistema. Verifique a URL de acesso e a sua conexão de internet. ',  // message
+        'Não foi possível conectar ao sistema. Verifique a URL de acesso e a sua conexão de internet. ',  // message
         alertDismissed,         // callback
         'Erro de Acesso',            // title
         'Ok'                  // buttonName
@@ -167,7 +167,7 @@ navigator.notification.alert(
 		},
 		error: function(retorno){
 navigator.notification.alert(
-        retorno+'Não foi possível conectar ao sistema. Verifique a URL de acesso e a sua conexão de internet. ',  // message
+        'Não foi possível conectar ao sistema. Verifique a URL de acesso e a sua conexão de internet. ',  // message
         alertDismissed,         // callback
         'Erro de Acesso',            // title
         'Ok'                  // buttonName
