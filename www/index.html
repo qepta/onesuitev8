@@ -101,7 +101,7 @@ if (getUrlParameter('famb')!=null) {
  psw = localStorage.getItem("fpsw");
  amb = localStorage.getItem("famb");
  }
-var urx = amb+"/webpages/login/validuserflex.jsp?f_username="+usr+"&f_password="+psw+"&userAgent=EmptiosAppv101";
+var urx = amb+"/webpages/login/validuserflex.jsp?f_username="+usr+"&f_password="+psw+"&userAgent=OneSuiteAppv500";
 if (amb.indexOf('f_username=')>=0) {
 var end = amb.substring(0,amb.indexOf("/webpages")); 
 
@@ -120,14 +120,20 @@ for (j = 0; j < paramar.length; j++) {
 		}
     }
 
-urx = amb+"&userAgent=EmptiosAppv101";
+urx = amb+"&userAgent=OneSuiteAppv500";
 amb = end;
 
 }
-alert(urx); 
+alert(urx);
+	$.ajax({
+		url: urx,
+		method: 'POST',
+		data: {},
+		beforeSend:function(e){
 
-this.http.get(urx, {}, {}).then(data => {
-if (data.data.indexOf('<ok>true') < 0) {
+			},
+		success: function(retorno){
+if (retorno.indexOf('<ok>true') < 0) {
 navigator.notification.alert(
         'Usuário ou senha inválida!',  // message
         alertDismissed,         // callback
@@ -138,31 +144,42 @@ navigator.notification.alert(
 		localStorage.setItem("fusr", "");
 		window.location.href = 'login.html'
 		}else{
-if (data.data.indexOf('<ok>true') >= 0) {
+if (retorno.indexOf('<ok>true') >= 0) {
 		localStorage.setItem("fusr", usr);
 		localStorage.setItem("fpsw", psw);
 		localStorage.setItem("famb", amb);
 	
 
 		window.location.href = 'base.html'
-
-
-   
-
-  })
-  .catch(error => {
+}else{
 
 navigator.notification.alert(
-        'Não foi possível conectar ao sistema. Verifique a URL de acesso e a sua conexão de internet. ',  // message
+        retorno+'Não foi possível conectar ao sistema. Verifique a URL de acesso e a sua conexão de internet. ',  // message
         alertDismissed,         // callback
         'Erro de Acesso',            // title
         'Ok'                  // buttonName
     );
+
+
+		window.location.href = 'login.html'
+}}
+
+		},
+		error: function(retorno){
+navigator.notification.alert(
+        retorno+'Não foi possível conectar ao sistema. Verifique a URL de acesso e a sua conexão de internet. ',  // message
+        alertDismissed,         // callback
+        'Erro de Acesso',            // title
+        'Ok'                  // buttonName
+    );
+
+
 		window.location.href = 'login.html'
 
-  });
 
-	  
+
+		}
+	});   
 }
 	
 	  
